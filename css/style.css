@@ -1,0 +1,224 @@
+body{
+    margin:0;
+    font-family:'Comfortaa', cursive;
+}
+
+/*---------------------INICIO*/
+
+.navbar{
+    background-color:#B9E2FF;
+    border-bottom: 2px solid #252831;
+    color: #252831; 
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+.navbar span{
+    font-weight: bolder;
+    font-size:44px;
+    align-items:center;
+}
+.agora{
+    font-weight: bold;
+    color: #C3FFC1;
+}
+.navegacao{
+    display:flex;
+    justify-content: space-between;
+    width: 411px;
+}
+.navbar a {
+    text-decoration: none;
+    color: #252831;
+}
+
+
+.container1{
+    background-image:url("./../img/banner.jpg");
+    height: 515px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.slogan{
+    display:flex;
+    margin-left: 60%;
+    text-align: justify;
+    font-size: 32px;
+    width: 300px;
+    color: #FFFFFF;
+
+}
+.container2{
+    width: 80%;
+    margin:auto;
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+
+}
+.missao{
+    margin-right: 40px;
+}
+
+.missao h2{
+    font-size:42px;
+    font-weight: bold;
+}
+.missao span{
+    text-align:justify;
+    width: 80px;
+    font-size:22px;
+}
+
+
+.footer{
+    background-color:#B9E2FF;
+    color:#FFFFFF;
+    height: 80px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    text-align:center;
+    font-weight: bold;
+}
+
+/**/
+.login{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction:column;
+    background-color: #ffffff;
+    opacity: 0.9;
+    border-radius:5px;
+    color: #252831;
+    height:65%;
+    width:35%;
+}
+.login h1{
+    font-weight:bolder;
+}
+.input{
+    width: 60%;
+    display: flex;
+    align-items:center;
+    flex-direction:column;
+    border-top: 40px;
+}
+.login label{
+    font-weight: bold;
+}
+.input form{
+    width:100%;
+}
+.input form input{
+    width:100%;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    justify-content:center;
+    border-radius: 20px;
+    height:30px;
+    margin-top:1%;
+    margin-bottom:20px;
+    outline: none;
+    border: 4px solid #B9E2FF;
+    text-align: start;
+    background-color: #FFFFFF;
+}
+button{
+    height:40px;
+    width:140px;
+    margin-top:1%;
+    border-radius:20px;
+    background-color: #C3FFC1;
+    color: #252831;
+    font-weight: bold;
+    font-size:16px;
+    border:0;
+}
+
+/**/
+.login_cadastro{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction:column;
+    background-color: #ffffff;
+    opacity: 0.9;
+    border-radius:5px;
+    color: #252831;
+    height:85%;
+    width:35%;
+}
+
+.login_cadastro button{
+    height:40px;
+    width:140px;
+    margin-top:1%;
+    border-radius:20px;
+    background-color: #C3FFC1;
+    color: #252831;
+    font-weight: bold;
+    font-size:16px;
+    border:0;
+}
+
+/*-------------------Inicio*/
+.navbar.inicio{
+    background-color:#B9E2FF;
+    color: #252831; 
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.navegacao{
+    width:80%;
+    margin:auto;
+}
+.user{
+    height:50px;
+}
+
+.informacoes{
+    width:80%;
+    height: 590px;
+    margin: auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    flex-direction:column;
+}
+
+.informacoes span{
+    text-align:justify;
+    font-size: 20px;
+
+}
+
+#select_hora{
+    border-radius:20px;
+    background-color: #d9e3f0;
+    border: 1px solid  #d9e3f0;
+    height:40px;
+    width:140px;
+    outline:0;
+    font-size: 20px;
+    text-align:center;
+
+}
+
+#div_botao{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#select_hora option{
+    border:20px solid #d9e3f0;
+    outline:none;
+}
