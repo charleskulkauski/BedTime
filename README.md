@@ -1,2 +1,2 @@
-# BedTime
-Site com intuito de auxiliar os ciclos de hora do sono, afim de proporcionar um despertar mais tranquilo.
+# API Projeto Site - 1º Semestre
+Esta API será utilizada para conectar seu Website do Projeto de PI ao Banco de Dados.
