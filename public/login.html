@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BedTime</title>
+    <title>BedTime | Login</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,49 +17,44 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <span>BedTime</span>
-
-        <div class="navegacao">
-            <a href="./index.html">Inicio</a>
-            <a href="./login.html" class="agora">Entrar</a>
-            <a href="./cadastro.html">Cadastro</a>
-        </div>
-    </div>
-    </div>
     <div class="corpo">
+        <div class="navbar">
+            <span>B</span>
+        </div>
         <div class="container1">
             <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <div class="login">
+                <h1>Bem vindo!</h1>
+                <div class="input">
+                    <form action="">
+                        <label for="email_input">Email</label>
+                        <br>
+                        <input type="text" id="email_input">
+                        <label for="senha_input">Senha</label>
+                        <br>
+                        <input type="password" id="senha_input">
+                    </form>
+                </div>
+                <button onclick="entrar()">Entrar</button>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/img/circle-loading.gif" id="loading-gif">
+                </div>
+                <div class="navegacao dologin">
+                    <a href="./index.html">Inicio</a>
+                    <a href="./login.html" class="agora">Entrar</a>
+                    <a href="./cadastro.html">Cadastro</a>
+                </div>
+                <div id="div_erros_login">
+
+                </div>
+
             </div>
         </div>
-        <div class="login">
-            <h1>Bem vindo!</h1>
-            <div class="input">
-                <form action="">
-                    <label for="email_input">Email</label>
-                    <br>
-                    <input type="text" id="email_input">
-                    <label for="senha_input">Senha</label>
-                    <br>
-                    <input type="text" id="senha_input">
-                </form>
-            </div>
-            <button onclick="entrar()">Entrar</button>
-
-            <div id="div_aguardar" class="loading-div">
-                <img src="./assets/img/circle-loading.gif" id="loading-gif">
-            </div>
-            <div id="div_erros_login">
-
-            </div>
-
-        </div>
-    </div>
-    <div class="footer">
-        <span>&copy;Sleep Time</span>
-    </div>
     </div>
 </body>
 

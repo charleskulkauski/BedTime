@@ -4,58 +4,85 @@ body{
 }
 
 /*---------------------INICIO*/
-
 .corpo{
-  background-image:url("./../assets/img/banner.jpg");
-  background-size: cover;
+  background:url("./../assets/img/banner.png") no-repeat;
+  background-color: #f7f3f3;
+  background-size: auto;
+  background-position: 20% 30%;
 }
-.navbar{
-  background-color:#B9E2FF;
-  border-bottom: 2px solid #252831;
-  color: #252831; 
+.navbar{ 
   height:80px;
   display:flex;
-  align-items:center;
-  justify-content:space-around;
+  margin-left: 80px;
 }
 .navbar span{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+  width:80px;
+  color: #252831;
+  background-color: #d9e3f0;
   font-weight: bolder;
-  font-size:44px;
-  align-items:center;
+  font-size:54px;
+  box-shadow: #2528313b 8px 5px;;
 }
 .agora{
   font-weight: bold;
   color: #C3FFC1;
 }
-.navegacao{
-  display:flex;
-  justify-content: space-between;
-  width: 30%;
-}
+
 .navbar a {
   text-decoration: none;
-  color: #252831;
+  color: #B9E2FF;
 }
 
 
 .container1{
   display:flex;
   align-items: center;
-  justify-content:center;
-  height:720px;  
+  justify-content:space-around;
+  flex-direction: column;
+  height:490px;  
 }
 
 .slogan{
   display:flex;
-  margin-left: 60%;
+  position: relative;
+  top: 30%;
+  margin-left:38%;
+  font-weight: bold;
   text-align: justify;
   font-size: 32px;
-  width: 300px;
-  color: #FFFFFF;
-
+  width: 450px;
+  color: #252831;
 }
+
+.navegacao{
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 34%;
+  margin-left: 50%;
+  text-decoration: none;
+  border-bottom: 2px #252831 solid;
+}
+.navegacao a{
+  font-weight: bold;
+  font-size:25px;
+  color: #252831;
+  text-decoration: none;
+}
+.navegacao.dologin{
+  width: 80%;
+  margin-top: 19.8%;
+  margin-left: 100%;
+}
+
+
 .container2{
-  background-color: #d9e3f0
+  background-color: #d9e3f0;
 }
 .container2.box{
   width: 80%;
@@ -80,8 +107,9 @@ body{
 
 
 .footer{
-  background-color:#B9E2FF;
-  color:#FFFFFF;
+  border-top: 1px #252831 solid;
+  background-color: #f7f3f3;
+  color:#252831;
   height: 80px;
   display:flex;
   justify-content: center;
@@ -116,14 +144,14 @@ body{
 .login{
   display:flex;
   align-items:center;
-  justify-content: center;
   flex-direction:column;
   background-color: #ffffff;
   opacity: 0.9;
   border-radius:5px;
   color: #252831;
-  height:65%;
-  width:35%;
+  height:85%;
+  width:50%;
+  box-shadow: #2528314b 8px 5px;
 }
 .login h1{
   font-weight:bolder;
