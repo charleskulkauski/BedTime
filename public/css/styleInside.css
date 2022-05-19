@@ -1,0 +1,93 @@
+body{
+    margin:0;
+    font-family:'Comfortaa', cursive;
+  }
+  
+/*-------------------Inicio*/
+.navbar-inicio{
+    background-color:#B9E2FF;
+    color: #252831; 
+    height:80px;
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+
+  }
+  .navegacao{
+      width: 100%;
+      display:flex;
+    align-items:center;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  #navMenu > span{
+      display: block;
+      width: 28px;
+      height: 2px;
+      border-radius: 9999px;
+      background-color: #252831;
+  }
+  #navMenu > span:not(:last-child){
+      margin-bottom: 7px;
+  }
+  #navMenu, #navMenu > span{
+      transition: all .4s ease-in-out;
+  }
+  #navMenu.active{
+      transition-delay: 0.8s;
+      transform: rotate(45deg);
+  }
+  #navMenuactive > span:nth-child(2){
+      width: 0;
+  }
+  #navMenu.activate > span:nth-child(1),
+  #navMenu.active > span:nth-child(3){
+      transition-delay: .4s;
+  }
+  #navMenu.activate > span:nth-child(1){
+      transform: translateY(9px);
+  }
+#navMenu.activate > span:nth-child(3){
+    transform: translateY(-9px) rotated(90deg);
+}
+  
+  .informacoes{
+    width:80%;
+    height: 590px;
+    margin: auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    flex-direction:column;
+  }
+  
+  .informacoes span{
+    text-align:justify;
+    font-size: 20px;
+  
+  }
+  
+  #select_hora{
+    border-radius:20px;
+    background-color: #d9e3f0;
+    border: 1px solid  #d9e3f0;
+    height:40px;
+    width:140px;
+    outline:0;
+    font-size: 20px;
+    text-align:center;
+  
+  }
+  
+  #div_botao{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  #select_hora option{
+    border:20px solid #d9e3f0;
+    outline:none;
+  }
+  
