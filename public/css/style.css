@@ -45,7 +45,7 @@ body{
   align-items: center;
   justify-content:space-around;
   flex-direction: column;
-  height:700px;  
+  height:490px;  
 }
 
 .slogan{
@@ -67,7 +67,7 @@ body{
   text-decoration: none;
   border-bottom: 2px #252831 solid;
   position: absolute;
-  top: 77%;
+  top: 88%;
   left: 50%;
 }
 .navegacao a{
@@ -152,7 +152,7 @@ body{
   width:40%;
   box-shadow: #2528314b 8px 5px;
   position:absolute;
-  bottom: 45%;
+  bottom: 20%;
 }
 .input{
   width: 60%;
@@ -204,10 +204,10 @@ button{
   opacity: 0.9;
   border-radius:5px;
   color: #252831;
-  height:60%;
+  height:80%;
   width:40%;
   position: absolute;
-  bottom : 30%;
+  bottom : 15%;
   box-shadow: #2528314b 8px 5px;
 }
 
