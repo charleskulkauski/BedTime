@@ -110,28 +110,206 @@
                 <option value="23:30">23:30</option>
             </select>
         </div>
-        <button class="buttons-principais" onclick="calcular()">Calcular</button>
-        <span id="mostrar"></span>
+        <button class="buttons-principais" id="calculo" onclick="calcular()">Calcular</button>
+        <div id="resultado">
+            <table class="tabela">
+                <tr>
+                    <th>Ciclos de 90 minutos</th>
+                    <th>Momento de <span id="momento"></span></th>
+                    <th>Total de minutos</th>
+                </tr>
+                <tr class="ciclo-bom">
+                    <td>6</td>
+                    <td><span id="sextoCiclo"></span></td>
+                    <td>540</td>
+                    <!--Colocar hras dormidas-->
+                </tr>
+                <tr class="ciclo-bom">
+                    <td>5</td>
+                    <td><span id="quintoCiclo"></span></td>
+                    <td>450</td>
+                </tr>
+                <tr class="ciclo-medio">
+                    <td>4</td>
+                    <td><span id="quartoCiclo"></span></td>
+                    <td>360</td>
+                </tr>
+                <tr class="ciclo-ruim">
+                    <td>3</td>
+                    <td><span id="terceiroCiclo"></span></td>
+                    <td>270</td>
+                </tr>
+                <tr class="ciclo-ruim">
+                    <td>2</td>
+                    <td><span id="segundoCiclo"></span></td>
+                    <td>180</td>
+                </tr>
+                <tr class="ciclo-ruim">
+                    <td>1</td>
+                    <td><span id="primeiroCiclo"></span></td>
+                    <td>90</td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </body>
 
 </html>
 <script>
-    horas = ['00:00', '00:30','01:00','01:30','02:00','02:30','03:00','03:30','04:00','04:30', '05:00',
-        '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00','09:30', '10:00', '10:30', '11:00',
+    decisao = 'nenhuma'
+    horas = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00',
+        '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00',
         '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00',
         '18:00', '19:00', '20:00', '20:30', '21:00', '22:00', '22:30', '23:00', '23:30']
-    function acordar(){
+    function acordar() {
         opcao.innerHTML = `Selecione a hora que deseja acordar`
+        decisao = 'acordar'
+
     }
-    function dormir(){
+    function dormir() {
         opcao.innerHTML = `Selecione a hora que deseja dormir`
+        decisao = 'dormir'
     }
-    function calcular(){
-        horaSelecionada = select_hora.value
-        for (posicao = 0; posicao< 19; posicao++){
-            mostrar.innerHTML += `${horas[posicao]}<br>` 
+    function calcular() {
+        exibirTabela = document.getElementById("resultado")
+        if (exibirTabela.style.display == "none") {
+            exibirTabela.style.display = "flex"
+            calculo.innerHTML = "Recomeçar"
+        } else {
+            exibirTabela.style.display = "none"
+            calculo.innerHTML = "Calcular"
         }
+
+        taAqui = 0
+        retomarPosicao = 0
+        horaSelecionada = select_hora.value
+
+        //Pegar a posição que a hora se encontra
+        for (posicao = 0; posicao < horas.length; posicao++) {
+            if (horas[posicao] == horaSelecionada) {
+                taAqui = posicao
+                retomarPosicao = posicao
+            }
+        }
+
+        if (decisao == 'acordar') {
+            momento.innerHTML = `ir dormir`
+            //6 Ciclos
+            for (cont = 19; cont > 0; cont--) { //vai rodar 19 vezes para baixo
+                sextoCiclo.innerHTML = `${horas[taAqui]}<br>` //Mostra a posição atual
+                taAqui -= 1 //A posição atual está descendo
+                if (taAqui < 0) { //Se a posião atual do array chegar a zero
+                    taAqui = 43 //A posição atual vai receber o final do array
+                }
+            }
+            taAqui = retomarPosicao
+            //5 Ciclos
+            for (cont = 16; cont > 0; cont--) {
+                quintoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui -= 1
+                if (taAqui < 0) {
+                    taAqui = 43
+                }
+            }
+            taAqui = retomarPosicao
+            //4 Ciclos
+            for (cont = 13; cont > 0; cont--) {
+                quartoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui -= 1
+                if (taAqui < 0) {
+                    taAqui = 43
+                }
+            }
+            taAqui = retomarPosicao
+            //3 ciclos
+            for (cont = 10; cont > 0; cont--) {
+                terceiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui -= 1
+                if (taAqui < 0) {
+                    taAqui = 43
+                }
+            }
+            taAqui = retomarPosicao
+
+            //2 Ciclos
+            for (cont = 7; cont > 0; cont--) {
+                segundoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui -= 1
+                if (taAqui < 0) {
+                    taAqui = 43
+                }
+            }
+            taAqui = retomarPosicao
+            //1 Ciclo
+            for (cont = 4; cont > 0; cont--) {
+                primeiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui -= 1
+                if (taAqui < 0) {
+                    taAqui = 43
+                }
+            }
+
+        } else {
+            momento.innerHTML = `acordar`
+            //6 Ciclos
+            for (cont = 0; cont < 19; cont++) { //vai rodar 19 vezes para baixo
+                sextoCiclo.innerHTML = `${horas[taAqui]}<br>` //Mostra a posição atual
+                taAqui += 1 //A posição atual está descendo
+                if (taAqui > 43) { //Se a posião atual do array chegar a zero
+                    taAqui = 0 //A posição atual vai receber o final do array
+                }
+            }
+            taAqui = retomarPosicao
+            //5 Ciclos
+            for (cont = 0; cont < 16; cont++) {
+                quintoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui += 1
+                if (taAqui > 43) {
+                    taAqui = 0
+                }
+            }
+            taAqui = retomarPosicao
+            //4 Ciclos
+            for (cont = 0; cont < 13; cont++) {
+                quartoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui += 1
+                if (taAqui > 43) {
+                    taAqui = 0
+                }
+            }
+            taAqui = retomarPosicao
+            //3 ciclos
+            for (cont = 0; cont < 10; cont++) {
+                terceiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui += 1
+                if (taAqui > 43) {
+                    taAqui = 0
+                }
+            }
+            taAqui = retomarPosicao
+
+            //2 Ciclos
+            for (cont = 0; cont < 7; cont++) {
+                segundoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui += 1
+                if (taAqui > 43) {
+                    taAqui = 0
+                }
+            }
+            taAqui = retomarPosicao
+            //1 Ciclo
+            for (cont = 0; cont < 4; cont++) {
+                primeiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                taAqui += 1
+                if (taAqui > 43) {
+                    taAqui = 0
+                }
+            }
+        }
+
+
+
         //5 ciclos precisam de 18 voltas
         // for (cont - 0; cont < 18; cont++){}
     }
