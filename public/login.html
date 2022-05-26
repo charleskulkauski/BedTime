@@ -22,11 +22,6 @@
             <span>B</span>
         </div>
         <div class="container1">
-            <div class="alerta_erro">
-                <div class="card_erro" id="cardErro">
-                    <span id="mensagem_erro"></span>
-                </div>
-            </div>
             <div class="login">
                 <h1>Bem vindo!</h1>
                 <div class="input">
@@ -34,9 +29,11 @@
                         <label for="email_input">Email</label>
                         <br>
                         <input type="text" id="email_input">
+                        <span id="mensagemErroEmail"></span>
                         <label for="senha_input">Senha</label>
                         <br>
                         <input type="password" id="senha_input">
+                        <span id="mensagemErroSenha"></span>
                     </form>
                 </div>
                 <button onclick="entrar()">Entrar</button>
@@ -45,13 +42,12 @@
                     <img src="./assets/img/circle-loading.gif" id="loading-gif">
                 </div>
                 <div id="div_erros_login">
-
                 </div>
             </div>
             <div class="navegacao">
-                <a href="./index.html">Inicio</a>
-                <a href="./login.html" class="agora">Entrar</a>
-                <a href="./cadastro.html">Cadastro</a>
+                <a href="./index.html" class="flutuar">Inicio</a>
+                <a href="./login.html" class="flutuar">Entrar</a>
+                <a href="./cadastro.html" class="flutuar">Cadastro</a>
             </div>
         </div>
         <div class="container2-login"></div>
@@ -60,8 +56,6 @@
 
 </html>
 <script>
-
-
     function entrar() {
         aguardar();
 
@@ -69,8 +63,10 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagemErroEmail.style.display = "flex"
+            mensagemErroEmail.innerHTML = "Preencha corretamente para prosseguir"
+            mensagemErroSenha.style.display = "flex"
+            mensagemErroSenha.innerHTML = "Preencha corretamente para prosseguir"
             finalizarAguardar();
             return false;
         }
@@ -128,7 +124,7 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        mensagemErro.style.display = "none"
     }
 
 </script>
