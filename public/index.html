@@ -31,29 +31,31 @@
     </div>
     <div class="container2">
         <div class="container2 box">
-            <div class="missao">
-                <h2>Missão</h2>
-                <span>Ajudar você a acordar com mais disposição e energia, deixando seu dia muito
-                    mais produtivo com um sono reparador</span>
+            <div id="info1">
+                <div class="missao">
+                    <h2>Missão</h2>
+                    <span>Ajudar você a acordar com mais disposição e energia, deixando seu dia muito
+                        mais produtivo com um sono reparador</span>
+                </div>
+                <img src="./assets/img/sonhando.png" alt="Desenho de um homem dormindo em cima de uma nuvem.">
             </div>
-            <img src="./assets/img/sonhando.png" alt="Desenho de um homem dormindo em cima de uma nuvem.">
-
             <div class="sobre">
-                <div class="info">
+                <div id="info2">
                     <h2>Sobre mim</h2>
-                <span>Um desenvolvedor apaixonado em dormir. Isso mesmo, dormir. Tirar aquela sonequinha da tarde
-                    estar em dia com as 8 horas de sono e se sentir revigorado com aquilo que me faz bem, descansar.
-                    Para ver mais projetos <link rel="stylesheet" href=""><a href="https://github.com/charleskulkauski">GitHub</a>
-                </span>
-                <img src="./assets/img/dormindo.png" alt="">
+                    <span>Um desenvolvedor apaixonado em dormir. Isso mesmo, dormir. Tirar aquela sonequinha da tarde
+                        estar em dia com as 8 horas de sono e se sentir revigorado com aquilo que me faz bem, descansar.
+                        Para ver mais projetos <link rel="stylesheet" href=""><a href="https://github.com/charleskulkauski">GitHub</a>
+                    </span>
+                    <img src="./assets/img/dormindo.png" alt="">
+                </div>
             </div>
                 
             </div>
 
         </div>
         <div class="bolinha">
-            <div class="primeiraBolinha"></div>
-            <div class="segundaBolinha"></div>
+            <div id="primeiraBolinha" onclick="card1()"></div>
+            <div id="segundaBolinha" onclick="card2()"></div>
         </div>
     </div>
 
@@ -63,6 +65,25 @@
 </body>
 
 </html>
+<script>
+    function card1(){
+        primeiroCard = document.getElementById('info1')
+        if (primeiroCard.style.display=='flex'){
+            primeiroCard.style.display = 'none'
+        }
+        primeiraBolinha.style.background.Color = 'rgba(128, 128, 128, 0.875)'
+        primeiraBolinha.style.border.Color = '#f7f3f3'
+    }
+
+    function card2(){
+        segundoCard = document.getElementById('info2')
+        if (segundoCard.style.display=='none'){
+            segundoCard.style.display = 'flex'
+        }
+        segundaBolinha.style.background.Color = 'rgba(128, 128, 128, 0.875)'
+        segundaBolinha.style.border.Color = '#f7f3f3'
+    }
+</script>
 
 <!-- Referencias
 

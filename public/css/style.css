@@ -96,10 +96,14 @@ body{
 
 .container2{
   background-color: #d9e3f0;
+  
 }
 .container2.box{
   width: 80%;
   margin:auto;
+}
+
+#info1{
   display:flex;
   justify-content: space-around;
   align-items:center;
@@ -117,6 +121,11 @@ body{
   width: 80px;
   font-size:22px;
 }
+#info2{
+  display:none;
+  justify-content: space-around;
+  align-items:center;
+}
 
 
 .footer{
@@ -133,21 +142,24 @@ body{
 
 .bolinha{
   display:flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 30px;
-  width: 5%;
+  width: 100%;
 }
 
-.primeiraBolinha{
+#primeiraBolinha{
   background-color: #f7f3f3;
+  border: 1px solid rgba(128, 128, 128, 0.875);
   height:20px;
   width:20px;
   border-radius: 50%;
+  margin-right: 5%;
 }
 
-.segundaBolinha{
+#segundaBolinha{
   background-color: #f7f3f3;
+  border: 1px solid rgba(128, 128, 128, 0.875);
   height:20px;
   width:20px;
   border-radius: 50%;
