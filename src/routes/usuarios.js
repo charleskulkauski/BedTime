@@ -1,23 +1,38 @@
-var express = require("express");
-var router = express.Router();
+var database = require("../database/config")
 
-var usuarioController = require("../controllers/usuarioController");
+function listar() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT * FROM usuario;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
-router.get("/", function (req, res) {
-    usuarioController.testar(req, res);
-});
+function entrar(email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    var instrucao = `
+        SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
-router.get("/listar", function (req, res) {
-    usuarioController.listar(req, res);
-});
+// Coloque os mesmos parâmetros aqui. Vá para a var instrucao
+function cadastrar(nome, email, senha, genero) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, genero);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO usuario (nome, email, senha, genero) VALUES ('${nome}', '${email}', '${senha}', '${genero}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.post("/cadastrar", function (req, res) {
-    usuarioController.cadastrar(req, res);
-})
-
-router.post("/autenticar", function (req, res) {
-    usuarioController.entrar(req, res);
-});
-
-module.exports = router;
+module.exports = {
+    entrar,
+    cadastrar,
+    listar,
+};

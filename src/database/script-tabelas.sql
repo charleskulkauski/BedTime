@@ -8,9 +8,11 @@ use bedTime;
 create table horaEscolhida(idHora int primary key auto_increment,
 	hora time);
 create table usario (idUsuario int primary key auto_increment,
-	nomeUsuario varchar(45),
-    emailUsuario varchar (90),
-    senhaUsuario varchar(14),
+	nome varchar(45),
+    email varchar (90),
+    senha varchar(14),
+    genero char(1),
+	check (genero = 'm' or 'f' or 'o'),
     fkHora int,
     foreign key (fkHora) references horaEscolhida(idHora));
     

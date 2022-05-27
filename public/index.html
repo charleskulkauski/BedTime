@@ -12,8 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" type="imagex/png" href="./assets/img/bedtime_logo.png">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/img/sleep.png">
 </head>
+
 <body>
 
     <div class="corpo">
@@ -25,7 +26,7 @@
         </div>
         <div class="navegacao">
             <a href="./index.html" class="flutuar">Inicio</a>
-            <a href="./login.html"class="flutuar">Entrar</a>
+            <a href="./login.html" class="flutuar">Entrar</a>
             <a href="./cadastro.html" class="flutuar">Cadastro</a>
         </div>
     </div>
@@ -39,24 +40,26 @@
                 </div>
                 <img src="./assets/img/sonhando.png" alt="Desenho de um homem dormindo em cima de uma nuvem.">
             </div>
-            <div class="sobre">
-                <div id="info2">
+
+            <div id="info2">
+                <div class="missao">
                     <h2>Sobre mim</h2>
                     <span>Um desenvolvedor apaixonado em dormir. Isso mesmo, dormir. Tirar aquela sonequinha da tarde
                         estar em dia com as 8 horas de sono e se sentir revigorado com aquilo que me faz bem, descansar.
-                        Para ver mais projetos <link rel="stylesheet" href=""><a href="https://github.com/charleskulkauski">GitHub</a>
+                        Para ver mais projetos
+                        <link rel="stylesheet" href=""><a href="https://github.com/charleskulkauski">GitHub</a>
                     </span>
-                    <img src="./assets/img/dormindo.png" alt="">
                 </div>
+                <img src="./assets/img/dormindo.png" alt="">
             </div>
-                
-            </div>
+        </div>
+    </div>
 
-        </div>
-        <div class="bolinha">
-            <div id="primeiraBolinha" onclick="card1()"></div>
-            <div id="segundaBolinha" onclick="card2()"></div>
-        </div>
+    </div>
+    <div class="bolinha">
+        <div id="primeiraBolinha" onclick="card1()"></div>
+        <div id="segundaBolinha" onclick="card2()"></div>
+    </div>
     </div>
 
     <div class="footer">
@@ -66,22 +69,27 @@
 
 </html>
 <script>
-    function card1(){
-        primeiroCard = document.getElementById('info1')
-        if (primeiroCard.style.display=='flex'){
+    primeiroCard = document.getElementById('info1')
+    segundoCard = document.getElementById('info2')
+
+    function card1() {
+        if (primeiroCard.style.display == 'flex' && segundoCard.style.display == 'none') {
             primeiroCard.style.display = 'none'
+            segundoCard.style.display = 'flex'
+        } else {
+            primeiroCard.style.display = 'flex'
+            segundoCard.style.display = 'none'
         }
-        primeiraBolinha.style.background.Color = 'rgba(128, 128, 128, 0.875)'
-        primeiraBolinha.style.border.Color = '#f7f3f3'
     }
 
-    function card2(){
-        segundoCard = document.getElementById('info2')
-        if (segundoCard.style.display=='none'){
+    function card2() {
+        if (segundoCard.style.display == 'none') {
             segundoCard.style.display = 'flex'
+            primeiroCard.style.display = 'none'
+        } else {
+            segundoCard.style.display = 'none'
+            primeiroCard.style.display = 'flex'
         }
-        segundaBolinha.style.background.Color = 'rgba(128, 128, 128, 0.875)'
-        segundaBolinha.style.border.Color = '#f7f3f3'
     }
 </script>
 
