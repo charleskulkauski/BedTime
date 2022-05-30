@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link rel="shortcut icon" type="imagex/png" href="./img/sleep.png">
+<link rel="shortcut icon" type="imagex/png" href="./assets/img/sleep.png">
 </head>
 <body>   
     <div class="corpo">
@@ -38,6 +38,13 @@
                         <label for="confirmacao_senha_input">Senha</label>
                         <br>
                         <input id="confirmacao_senha_input" type="password">
+                        <label for="genero_select">Gênero</label>
+                        <br>
+                        <select name="genero_select" id="genero_select">
+                            <option value="m">Masculino</option>
+                            <option value="f">Feminino</option>
+                            <option value="o">Outro</option>
+                        </select>
                     </form>
                 </div>
                 <button onclick="cadastrar()">Cadastrar</button>
@@ -51,9 +58,9 @@
             </div>
         </div>
         <div class="navegacao">
-            <a href="./index.html">Inicio</a>
-            <a href="./login.html">Entrar</a>
-            <a href="./cadastro.html" class="agora">Cadastro</a>
+            <a href="./index.html" class="flutuar">Inicio</a>
+            <a href="./login.html" class="flutuar">Entrar</a>
+            <a href="./cadastro.html" class="flutuar">Cadastro</a>
         </div>
         <div class="container2-login"></div>
         
@@ -70,6 +77,7 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var generoVar = genero_select.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
@@ -93,7 +101,8 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                generoServer: generoVar
             })
         }).then(function (resposta) {
 

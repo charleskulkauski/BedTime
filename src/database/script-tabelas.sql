@@ -5,18 +5,33 @@
 /* para workbench - local - desenvolvimento */
 create database bedTime;
 use bedTime;
+
 create table horaEscolhida(idHora int primary key auto_increment,
-	hora time);
-create table usario (idUsuario int primary key auto_increment,
-	nomeUsuario varchar(45),
-    emailUsuario varchar (90),
-    senhaUsuario varchar(14),
-    fkHora int,
-    foreign key (fkHora) references horaEscolhida(idHora));
+	hora varchar(6),
+    selecao char(8),
+    check (selecao = 'dormir' or selecao = 'acordar'));    
+insert into horaEscolhida (hora, selecao) values ('22:30', 'dormir'),
+('23:30', 'dormir'),
+('23:30', 'dormir'),
+('07:00', 'acordar');
+
+create table usuario (idUsuario int primary key auto_increment,
+	nome varchar(45),
+    email varchar (90),
+    senha varchar(14),
+    genero char(1),
+	check (genero = 'm' or genero = 'f' or genero ='o'));
     
-
-
-
+insert into usuario(nome, email, senha, genero) values 
+('Carla', 'carla@hotmailcom', '1234', 'f'),
+('Carlos', 'carlos@hotmailcom', '1234', 'm'),
+('Daniel', 'daniel@hotmailcom', '1234', 'm'),
+('Rodrigo', 'rodrigo@hotmailcom', '1234', 'o');
+create table recursiva(fkUsuario int,
+foreign key (fkUsuario) references usuario(idUsuario),
+fkHora int,
+foreign key (fkHora) references horaEscolhida(idHora));
+insert into recursiva values ('1','1'), ('2','2'), ('3','3'), ('4','4');
 
 /* para sql server - remoto - produção */
 
