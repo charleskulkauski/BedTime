@@ -7,6 +7,7 @@ create database bedTime;
 use bedTime;
 
 create table horaEscolhida(idHora int primary key auto_increment,
+<<<<<<< HEAD
 	hora varchar(6),
     selecao char(8),
     check (selecao = 'dormir' or selecao = 'acordar'));    
@@ -16,11 +17,21 @@ insert into horaEscolhida (hora, selecao) values ('22:30', 'dormir'),
 ('07:00', 'acordar');
 
 create table usuario (idUsuario int primary key auto_increment,
+=======
+	hora time);
+create table usario (idUsuario int primary key auto_increment,
+>>>>>>> origin
 	nome varchar(45),
     email varchar (90),
     senha varchar(14),
     genero char(1),
+<<<<<<< HEAD
 	check (genero = 'm' or genero = 'f' or genero ='o'));
+=======
+	check (genero = 'm' or 'f' or 'o'),
+    fkHora int,
+    foreign key (fkHora) references horaEscolhida(idHora));
+>>>>>>> origin
     
 insert into usuario(nome, email, senha, genero) values 
 ('Carla', 'carla@hotmailcom', '1234', 'f'),
