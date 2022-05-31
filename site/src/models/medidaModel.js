@@ -14,12 +14,15 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                     where fk_aquario = ${idAquario}
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select nome, hora from recursiva
-        join usuario
-        on fkUsuario = idUsuario
-        join horaEscolhida
-        on fkHora = idHora
-        where genero = 'm' 
+        instrucaoSql = `SELECT MAX(c), hora FROM (
+            select h.hora, COUNT(h.hora) as c, selecao, idUsuario, genero from recursiva 
+            join usuario
+            on fkUsuario = idUsuario
+            join horaEscolhida as h
+            on fkHora = idHora
+            where genero = 'm'
+            GROUP BY genero, hora
+            ) AS resultado;
         `;//Maior clique de homens
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
