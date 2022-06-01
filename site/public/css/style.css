@@ -21,7 +21,6 @@ body::-webkit-scrollbar-thumb {
   background:url("./../assets/img/inicio/night.jpg") no-repeat;
   background-size: cover;
   height: 100vh;
-  width: 100vw;
 
 }
 
@@ -76,15 +75,14 @@ body::-webkit-scrollbar-thumb {
 
 .slogan{
   display:flex;
-  font-weight: bold;
+  font-weight: 200;
   text-align: center;
   font-size: 54px;
   width: 40%;
   color: #ffffff;
   font-family: 'Playfair Display', serif;
-  font-weight: 400;
   position: relative;
-  top: 22%;
+  top: 2%;
   text-shadow: 
                -1px -1px 0px #3561a0, 
                -1px 1px 0px #3561a0,                    
@@ -149,9 +147,8 @@ body::-webkit-scrollbar-thumb {
 
 
 .footer{
-  border-top: 1px #252831 solid;
-  background-color: #f7f3f3;
-  color:#252831;
+  background-color: #0b051b;
+  color:#ffffff;
   height: 80px;
   display:flex;
   justify-content: center;
@@ -189,7 +186,7 @@ body::-webkit-scrollbar-thumb {
 
 #cardErroEmail, #cardErroSenha, #cardErroNome, #cardErroConfirmacaoSenha, #cardErroGenero{
   display: none;
-  font-size: 14px;
+  font-size: 10px;
   color:red;
 
 }
@@ -199,14 +196,16 @@ body::-webkit-scrollbar-thumb {
   display:flex;
   align-items:center;
   flex-direction:column;
-  background-color: #ffffff;
+  background-color: #0b051b;
   opacity: 0.9;
   border-radius:5px;
-  color: #252831;
+  color: #ffffff;
+  height: 50%;
   width:40%;
   box-shadow: #2528314b 8px 5px;
   position:absolute;
   bottom: 30%;
+  
 }
 
 .input{
@@ -218,6 +217,7 @@ body::-webkit-scrollbar-thumb {
 }
 .input form{
   width:100%;
+  margin-bottom: 10%;
 }
 .input form input{
   width:100%;
@@ -225,30 +225,43 @@ body::-webkit-scrollbar-thumb {
   align-items:center;
   flex-direction:column;
   justify-content:center;
-  border-radius: 20px;
   height:30px;
   margin-top:1%;
   margin-bottom:2%;
   outline: none;
-  border: 4px solid #B9E2FF;
   text-align: center;
-  background-color: #FFFFFF;
+  border: 0 none;
+  border-bottom: 1px solid white;
+  background-color:transparent;
+  color: white;
+  box-shadow: none;
+}
+placeholder{
+  font-family:'Playfair Display', serif; 
+  font-weight: 200;
 }
 .container2-login{
-  background-color: #d9e3f0;
-  height: 200px;
+  background-color: #0b051b;
+  height: 50px;
 }
+
+
 button{
   height:40px;
   width:140px;
   margin-top:1%;
   margin-bottom: 3%;
   border-radius:20px;
-  background-color: #C3FFC1;
-  color: #252831;
+  background-color: #2e1570;
+  color: #ffffff;
   font-weight: bold;
   font-size:16px;
   border:0;
+}
+
+button:hover{
+  background-color: #ffffff;
+  color: #2e1570;
 }
 /*CADASTRO*/
 .cadastro{
@@ -256,10 +269,10 @@ button{
   align-items:center;
   justify-content: center;
   flex-direction:column;
-  background-color: #ffffff;
-  opacity: 0.9;
+  background-color: #0b051b;
+  opacity: 0.8;
   border-radius:5px;
-  color: #252831;
+  color: #ffffff;
   height:80%;
   width:40%;
   position: absolute;
@@ -267,20 +280,8 @@ button{
   box-shadow: #2528314b 8px 5px;
 }
 
-.cadastro button{
-  height:40px;
-  width:140px;
-  margin-top:1%;
-  border-radius:20px;
-  background-color: #C3FFC1;
-  color: #252831;
-  font-weight: bold;
-  font-size:16px;
-  border:0;
-}
-
 #genero_select{
-  width:460px;
+  width: 99%;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -289,9 +290,11 @@ button{
   margin-top:1%;
   margin-bottom:20px;
   outline: none;
-  border: 4px solid #B9E2FF;
+  border:0 none;
+  border-bottom: 1 solid #2e1570;
   text-align: center;
-  background-color: #FFFFFF;
+  color: #ffffff;
+  background: transparent;
 }
 
 .loading-div {
