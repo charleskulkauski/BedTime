@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,15 @@
     <title>BedTime | Cadastro</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link rel="shortcut icon" type="imagex/png" href="./assets/img/sleep.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/img/sleep.png">
+    <script src="./js/funcoes.js"></script>
 </head>
-<body>   
+
+<body>
     <div class="corpo">
         <div class="navbar">
             <span>B</span>
@@ -29,15 +34,19 @@
                         <label for="input_nome">Nome</label>
                         <br>
                         <input type="text" id="nome_input">
+                        <span id="cardErroNome"></span>
                         <label for="email_input">Email</label>
                         <br>
                         <input type="text" id="email_input">
+                        <span id="cardErroEmail"></span>
                         <label for="senha_input">Senha</label>
                         <br>
                         <input type="password" id="senha_input">
+                        <span id="cardErroSenha"></span>
                         <label for="confirmacao_senha_input">Senha</label>
                         <br>
                         <input id="confirmacao_senha_input" type="password">
+                        <span id="cardErroConfirmacaoSenha"></span>
                         <label for="genero_select">Gênero</label>
                         <br>
                         <select name="genero_select" id="genero_select">
@@ -45,16 +54,17 @@
                             <option value="f">Feminino</option>
                             <option value="o">Outro</option>
                         </select>
+                        <span id="cardErroGenero"></span>
                     </form>
                 </div>
-                <button onclick="cadastrar()">Cadastrar</button>
+                <button onclick="validarInput()">Cadastrar</button>
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/img/circle-loading.gif" id="loading-gif">
                 </div>
                 <div id="div_erros_login">
 
                 </div>
-                
+
             </div>
         </div>
         <div class="navegacao">
@@ -63,14 +73,93 @@
             <a href="./cadastro.html" class="flutuar">Cadastro</a>
         </div>
         <div class="container2-login"></div>
-        
+
     </div>
 </body>
+
 </html>
 <script>
-    function cadastrar() {
-        //aguardar();
+    invalido = 0
+    
+    function validarInput() {
 
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var generoVar = genero_select.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || generoVar == "") {
+            cardErroEmail.style.display = "block"
+            cardErroEmail.innerHTML = "Por favor preencha os campos para prosseguir";
+
+            cardErroNome.style.display = "block"
+            cardErroNome.innerHTML = "Por favor preencha os campos para prosseguir"
+
+            cardErroSenha.style.display = "block"
+            cardErroSenha.innerHTML = "Por favor preencha os campos para prosseguir";
+
+            cardErroConfirmacaoSenha.style.display = "block"
+            cardErroConfirmacaoSenha.innerHTML = "Por favor preencha os campos para prosseguir";
+
+            cardErroGenero.style.display = "block"
+            cardErroGenero.innerHTML = "Por favor preencha os campos para prosseguir";
+            invalido++
+            finalizarAguardar();
+            return false;
+
+        } else if (nomeVar.length < 4) {
+            cardErroNome.style.display = "block"
+            cardErroNome.innerHTML = "Nome muito curto"
+            invalido++
+            finalizarAguardar();
+            return false;
+
+        } else if (emailVar.indexOf("@") == -1 || emailVar.endsWith(".com") == -1) {
+            cardErroEmail.style.display = "block"
+            cardErroEmail.innerHTML = "Por favor insira um email valido"
+            invalido++
+            finalizarAguardar();
+            return false;
+
+        } else if (senhaVar < 8) {
+            cardErroSenha.style.display = "block"
+            cardErroSenha.innerHTML = `A senha deve conter mais de 8 caracteres`
+            invalido++
+            finalizarAguardar();
+            return false;
+        } else if (confirmacaoSenhaVar != senhaVar) {
+            cardErroConfirmacaoSenha.style.display = "block"
+            cardErroConfirmacaoSenha.innerHTML = `As senhas não coincidem, digite uma senha igual a anterior`
+            invalido++
+            finalizarAguardar();
+            return false;
+
+        } else if (generoVar.value == 0) {
+            cardErroGenero.innerHTML = `Selecione um gênero`
+            invalido++
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+            cardErroNome.innerHTML = ""
+            cardErroEmail.innerHTML = ""
+            cardErroSenha.innerHTML = ""
+            cardErroConfirmacaoSenha.innerHTML = ""
+            cardErroGenero.innerHTML = ""
+        }
+
+        if (invalido == 0) {
+            cadastro()
+            window.location.href = "login.html"
+        } else {
+            invalido = 0
+        }
+
+    }
+    function cadastro() {
+        aguardar();
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var nomeVar = nome_input.value;
@@ -78,17 +167,6 @@
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
         var generoVar = genero_select.value;
-
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -116,7 +194,7 @@
                 setTimeout(() => {
                     window.location = "login.html";
                 }, "2000")
-                
+
                 limparFormulario();
                 finalizarAguardar();
             } else {
@@ -130,7 +208,12 @@
         return false;
     }
 
+
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        cardErroEmail.style.display = "none"
+        cardErroNome.style.display = "none"
+        cardErroSenha.style.display = "none"
+        cardErroConfirmacaoSenha.style.display = "none"
+        cardErroGenero.style.display = "none"
     }
 </script>

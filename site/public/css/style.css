@@ -2,14 +2,26 @@ body{
   margin:0;
   font-family:'Comfortaa', cursive;
 }
+/*SCROLL */
+body::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #0b051b;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #2e1570;    /* color of the scroll thumb */
+  border-radius: 10px;     /* creates padding around scroll thumb */
+}
 
 /*---------------------INICIO*/
 .corpo{
-  background:url("./../assets/img/banner.png") no-repeat;
-  background-color: #f7f3f3;
-  background-size: auto;
-  background-position: 20% 30%;
-  height: 100%;
+  background:url("./../assets/img/inicio/night.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 
 }
 
@@ -20,15 +32,13 @@ body{
 }
 .navbar span{
   display:flex;
-  justify-content: center;
   align-items: center;
   height:100%;
-  width:80px;
-  color: #252831;
-  background-color: #d9e3f0;
+  width:80%;
+  margin:auto;
+  color: #ffffff;
   font-weight: bolder;
-  font-size:54px;
-  box-shadow: #2528313b 8px 5px;;
+  font-size:34px;
 }
 
   .flutuar{
@@ -52,7 +62,7 @@ body{
 
 .navbar a {
   text-decoration: none;
-  color: #B9E2FF;
+  color: #ffffff;
 }
 
 
@@ -66,13 +76,20 @@ body{
 
 .slogan{
   display:flex;
-  position: relative;
-  margin-left:38%;
   font-weight: bold;
-  text-align: justify;
-  font-size: 42px;
-  width: 450px;
-  color: #252831;
+  text-align: center;
+  font-size: 54px;
+  width: 40%;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  position: relative;
+  top: 22%;
+  text-shadow: 
+               -1px -1px 0px #3561a0, 
+               -1px 1px 0px #3561a0,                    
+                1px -1px 0px #3561a0,                  
+                1px 0px 0px #3561a0;
 }
 
 .navegacao{
@@ -81,7 +98,7 @@ body{
   flex-direction: row;
   justify-content: space-around;
   text-decoration: none;
-  border-bottom: 2px #252831 solid;
+  color: #ffffff;
   position: absolute;
   top: 88%;
   left: 50%;
@@ -89,13 +106,15 @@ body{
 .navegacao a{
   font-weight: bold;
   font-size:25px;
-  color: #252831;
+  color: #ffffff;
   text-decoration: none;
 }
 
 
 .container2{
-  background-color: #d9e3f0;
+  background-color: #0b051b;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
   
 }
 .container2.box{
@@ -147,7 +166,7 @@ body{
   align-items: top;
   height: 40px;
   width: 100%;
-  background-color: #d9e3f0;
+  background-color: #0b051b;
 }
 
 #primeiraBolinha{
@@ -168,7 +187,7 @@ body{
 }
 /*ERROS*/
 
-#mensagemErroEmail, #mensagemErroSenha{
+#cardErroEmail, #cardErroSenha, #cardErroNome, #cardErroConfirmacaoSenha, #cardErroGenero{
   display: none;
   font-size: 14px;
   color:red;
@@ -273,4 +292,10 @@ button{
   border: 4px solid #B9E2FF;
   text-align: center;
   background-color: #FFFFFF;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
 }

@@ -29,11 +29,11 @@
                         <label for="email_input">Email</label>
                         <br>
                         <input type="text" id="email_input">
-                        <span id="mensagemErroEmail"></span>
+                        <span id="cardErroEmail"></span>
                         <label for="senha_input">Senha</label>
                         <br>
                         <input type="password" id="senha_input">
-                        <span id="mensagemErroSenha"></span>
+                        <span id="cardErroSenha"></span>
                     </form>
                 </div>
                 <button onclick="entrar()">Entrar</button>
@@ -63,8 +63,10 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            cardErroEmail.style.display = "block";
+            cardErroSenha.style.display = "block";
+            cardErroEmail.innerHTML = "Preencha este campo para prosseguir";
+            cardErroSenha.innerHTML = "Preencha este campo para prosseguir";
             finalizarAguardar();
             return false;
         }
@@ -99,7 +101,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
+                        window.location = "./inicio.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
