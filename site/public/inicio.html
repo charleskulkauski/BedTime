@@ -306,9 +306,32 @@
             }
         }
 
+        fetch("/usuarios/encaminharDados", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                horaEscolhidaServer: horaEscolhida,
+                decisaoServer: decisao
+            })
+        }).then(function (resposta) {
 
+            console.log("resposta: ", resposta);
 
-        //5 ciclos precisam de 18 voltas
-        // for (cont - 0; cont < 18; cont++){}
+            if (resposta.ok) {
+                console.log("Tudo certo")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
     }
 </script>
