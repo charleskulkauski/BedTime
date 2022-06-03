@@ -1,28 +1,21 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function homensAcordam(idAquario, limite_linhas) {
 
     instrucaoSql = ''
 
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        CONVERT(varchar, momento, 108) as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc`;
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT MAX(c), hora FROM (
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT MAX(c) as totalCliqueHomens, hora as horaHomens FROM (
             select h.hora, COUNT(h.hora) as c, selecao, idUsuario, genero from recursiva 
             join usuario
             on fkUsuario = idUsuario
             join horaEscolhida as h
             on fkHora = idHora
-            where genero = 'm'
+            where genero = 'm' and selecao = 'acordar'
             GROUP BY genero, hora
             ) AS resultado;
+
+            
         `;//Maior clique de homens
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -32,6 +25,100 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+
+function mulheresAcordam(idAquario, limite_linhas) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT MAX(c) as totalCliqueHomens, hora as horaHomens FROM (
+            select h.hora, COUNT(h.hora) as c, selecao, idUsuario, genero from recursiva 
+            join usuario
+            on fkUsuario = idUsuario
+            join horaEscolhida as h
+            on fkHora = idHora
+            where genero = 'f' where selecao = 'acordar'
+            GROUP BY genero, hora
+            ) AS resultado;
+
+            
+        `;//Maior clique de homens
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function homensDormem(idAquario, limite_linhas){
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT MAX(c) as totalCliqueHomens, hora as horaHomens FROM (
+            select h.hora, COUNT(h.hora) as c, selecao, idUsuario, genero from recursiva 
+            join usuario
+            on fkUsuario = idUsuario
+            join horaEscolhida as h
+            on fkHora = idHora
+            where genero = 'm' and selecao = 'dormir'
+            GROUP BY genero, hora
+            ) AS resultado;
+
+            
+        `;//Maior clique de homens
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function mulheresDormem(idAquario, limite_linhas){
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT MAX(c) as totalCliqueHomens, hora as horaHomens FROM (
+            select h.hora, COUNT(h.hora) as c, selecao, idUsuario, genero from recursiva 
+            join usuario
+            on fkUsuario = idUsuario
+            join horaEscolhida as h
+            on fkHora = idHora
+            where genero = 'f' and selecao = 'dormir'
+            GROUP BY genero, hora
+            ) AS resultado;
+
+            
+        `;//Maior clique de homens
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function buscarMedidasEmTempoReal(idAquario) {
 
@@ -65,6 +152,9 @@ function buscarMedidasEmTempoReal(idAquario) {
 
 
 module.exports = {
-    buscarUltimasMedidas,
+    homensAcordam,
+    mulheresAcordam,
+    homensDormem,
+    mulheresDormem,
     buscarMedidasEmTempoReal
 }
