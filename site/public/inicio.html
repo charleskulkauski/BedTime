@@ -29,7 +29,7 @@
         <div id="nav-content" tabindex="0">
             <ul>
                 <li><a href="./inicio.html">Home</a></li>
-                <li><a href="./dashboard/dashboard.html">Estátisticas</a></li>
+                <li><a href="./dashboard/dashboard.html">Métricas</a></li>
                 <li><a href="./curiosidades.html">Curiosidades</a></li>
                 <li><a href="./index.html" class="flutuar"  style="color:red" onclick="limparSessao()"><u>Sair</u></a></li>
             </ul>
@@ -157,6 +157,7 @@
 <script>
     nome_usuario.innerHTML = sessionStorage.getItem('NOME_USUARIO')
     idUsuario = sessionStorage.getItem('ID_USUARIO')
+    idHora = 0
     decisao = 'nenhuma'
     horaEscolhida = 'nenhuma'
     horas = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00',
@@ -174,6 +175,7 @@
     }
 
     function calcular() {
+        idHora += 1
         if (decisao == 'nenhuma' || decisao == '') {
             opcao.innerHTML = ''
             opcao.innerHTML = `Informe se você vai ir dormir ou acordar`
@@ -350,8 +352,6 @@
             finalizarAguardar();
         });
 
-        return false;
-
         fetch("/usuarios/associarHora", {
             method: "POST",
             headers: {
@@ -360,6 +360,7 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
+                idHoraServer: idHora,
                 idUsuarioServer: idUsuario
             })
         }).then(function (resposta) {
@@ -377,9 +378,6 @@
         });
 
         return false;
-
-
-        
 
     }
 </script>

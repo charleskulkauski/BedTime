@@ -9,9 +9,10 @@ function testar(req, res) {
 
 function associarHora(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var associar = req.body.idUsuarioServer;
+    var associarH = req.body.idHoraServer;
+    var associarID = req.body.idUsuarioServer;
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.associarHora(associar)
+    usuarioModel.associarHora(associarH, associarID)
         .then(
             function (resultado) {
                 res.json(resultado);

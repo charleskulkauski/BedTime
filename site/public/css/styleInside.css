@@ -261,25 +261,28 @@ transform: none;
   height: 490px;
   margin: auto;
   display:flex;
-  justify-content:space-evenly;
+  justify-content:space-around;
   flex-direction:column;
   color: #f8f9f4;
   text-align:justify;
 }
 .grafico{
   display:flex;
-  flex-direction: column;
+  justify-content: space-around;
   height: 100%;
   width: 100%;
 }
 .grafico1{
-  width: 40%;
-  height: 40;
+  display:flex;
+  justify-content: space-around;
+  align-items:center;
+  flex-direction: column;
 }
 .grafico2{
-  width: 40%;
-  height: 40%;
-  margin-left: 60%;
+  display:flex;
+  justify-content: space-around;
+  align-items:center;
+  flex-direction: column;
 }
 
 #nome_usuario{

@@ -1,28 +1,6 @@
 var medidaModel = require("../models/medidaModel");
 
-<<<<<<< HEAD
-function cliqueMulheres(req,res){
-    const limite_linhas = 7;
- 
-    var idAquario = req.params.idAquario;
-
-    medidaModel.cliqueMulheres(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
-function buscarUltimasMedidas(req, res) {
-=======
 function homensAcordam(req, res) {
->>>>>>> c4825e64107ddfdc550cb5a43f8f54e929347ebc
 
     const limite_linhas = 7;
  
@@ -43,7 +21,7 @@ function homensAcordam(req, res) {
     });
 }
 
-function mulheresAcordam(){
+function mulheresAcordam(req, res){
     const limite_linhas = 7;
 
     var idAquario = req.params.idAquario;
@@ -63,7 +41,7 @@ function mulheresAcordam(){
     });
 }
 
-function homensDormem(){
+function homensDormem(req, res){
     const limite_linhas = 7;
 
     var idAquario = req.params.idAquario;
@@ -83,7 +61,7 @@ function homensDormem(){
     });
 }
 
-function mulheresDormem(){
+function mulheresDormem(req, res){
     const limite_linhas = 7;
 
     var idAquario = req.params.idAquario;
@@ -104,36 +82,9 @@ function mulheresDormem(){
 }
 
 
-function buscarMedidasEmTempoReal(req, res) {
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando medidas em tempo real`);
-
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
 module.exports = {
-<<<<<<< HEAD
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
-    cliqueMulheres
-=======
     homensAcordam,
     mulheresAcordam,
     homensDormem,
-    mulheresDormem,
-    buscarMedidasEmTempoReal
->>>>>>> c4825e64107ddfdc550cb5a43f8f54e929347ebc
-
+    mulheresDormem
 }
