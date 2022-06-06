@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BedTime</title>
+    <title>Calculadora</title>
     <link rel="stylesheet" href="./css/styleInside.css">
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/acari-sans-neue" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600&family=Exo+2:wght@100;200;400&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/img/sleep.png">
+    <link rel="stylesheet" href="./css/styleInside.css">
 </head>
+
 <body>
     <header tabindex="0">
         <span class="titulo">
@@ -26,8 +30,8 @@
             <ul>
                 <li><a href="./inicio.html">Home</a></li>
                 <li><a href="./dashboard/dashboard.html">Estátisticas</a></li>
-                <li><a href="#0">SocioEmocional</a></li>
-                <li class="small"><a href="#0">Git Hub - Charles Kulkauski</a></li>
+                <li><a href="./curiosidades.html">Curiosidades</a></li>
+                <li><a href="./index.html" class="flutuar"  style="color:red" onclick="limparSessao()"><u>Sair</u></a></li>
             </ul>
         </div>
     </div>
@@ -50,7 +54,7 @@
             <button class="buttons-principais" onclick="dormir()">Dormir</button>
             <button class="buttons-principais" onclick="acordar()">Acordar</button>
         </div>
-        <h1 id="opcao"></h1>
+        <div id="opcao"></div>
         <!--IF AQUI INSERIR NO JS-->
         <div class="div_select">
             <select name="select_hora" id="select_hora">
@@ -109,7 +113,7 @@
             <table class="tabela">
                 <tr>
                     <th>Ciclos de 90 minutos</th>
-                    <th>Momento de <span id="momento"></span></th>
+                    <th>Momento de <span id="momento" style="font-size: 18px"></span></th>
                     <th>Total de minutos</th>
                 </tr>
                 <tr class="ciclo-bom">
@@ -152,12 +156,13 @@
 </html>
 <script>
     nome_usuario.innerHTML = sessionStorage.getItem('NOME_USUARIO')
+    idUsuario = sessionStorage.getItem('ID_USUARIO')
     decisao = 'nenhuma'
     horaEscolhida = 'nenhuma'
     horas = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00',
-        '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00',
-        '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00',
-        '18:00', '19:00', '20:00', '20:30', '21:00', '22:00', '22:30', '23:00', '23:30']
+            '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00',
+            '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00',
+            '18:00', '19:00', '20:00', '20:30', '21:00', '22:00', '22:30', '23:00', '23:30']
     function acordar() {
         opcao.innerHTML = `Selecione a hora que deseja acordar`
         decisao = 'acordar'
@@ -167,144 +172,158 @@
         opcao.innerHTML = `Selecione a hora que deseja dormir`
         decisao = 'dormir'
     }
-    
+
     function calcular() {
-        horaEscolhida = select_hora.value
-        exibirTabela = document.getElementById("resultado")
-        if (exibirTabela.style.display == "none") {
-            exibirTabela.style.display = "flex"
-            calculo.innerHTML = "Recomeçar"
+        if (decisao == 'nenhuma' || decisao == '') {
+            opcao.innerHTML = ''
+            opcao.innerHTML = `Informe se você vai ir dormir ou acordar`
         } else {
-            exibirTabela.style.display = "none"
-            calculo.innerHTML = "Calcular"
+            horaEscolhida = select_hora.value
+            exibirTabela = document.getElementById("resultado")
+
+            taAqui = 0
+            retomarPosicao = 0
+            horaSelecionada = select_hora.value
+
+            //Pegar a posição que a hora se encontra
+            for (posicao = 0; posicao < horas.length; posicao++) {
+                if (horas[posicao] == horaSelecionada) {
+                    taAqui = posicao
+                    retomarPosicao = posicao
+                }
+            }
+
+            if (decisao == 'acordar') {
+                momento.innerHTML = `ir dormir`
+
+                exibirTabela.style.display = "flex"
+                
+                if (exibirTabela.style.display == "none") {
+                    exibirTabela.style.display = "flex"
+                    calculo.innerHTML = "Recomeçar"
+                }
+
+                //6 Ciclos
+                for (cont = 19; cont > 0; cont--) { //vai rodar 19 vezes para baixo
+                    sextoCiclo.innerHTML = `${horas[taAqui]}<br>` //Mostra a posição atual
+                    taAqui -= 1 //A posição atual está descendo
+                    if (taAqui < 0) { //Se a posião atual do array chegar a zero
+                        taAqui = 43 //A posição atual vai receber o final do array
+                    }
+                }
+                taAqui = retomarPosicao
+                //5 Ciclos
+                for (cont = 16; cont > 0; cont--) {
+                    quintoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui -= 1
+                    if (taAqui < 0) {
+                        taAqui = 43
+                    }
+                }
+                taAqui = retomarPosicao
+                //4 Ciclos
+                for (cont = 13; cont > 0; cont--) {
+                    quartoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui -= 1
+                    if (taAqui < 0) {
+                        taAqui = 43
+                    }
+                }
+                taAqui = retomarPosicao
+                //3 ciclos
+                for (cont = 10; cont > 0; cont--) {
+                    terceiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui -= 1
+                    if (taAqui < 0) {
+                        taAqui = 43
+                    }
+                }
+                taAqui = retomarPosicao
+
+                //2 Ciclos
+                for (cont = 7; cont > 0; cont--) {
+                    segundoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui -= 1
+                    if (taAqui < 0) {
+                        taAqui = 43
+                    }
+                }
+                taAqui = retomarPosicao
+                //1 Ciclo
+                for (cont = 4; cont > 0; cont--) {
+                    primeiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui -= 1
+                    if (taAqui < 0) {
+                        taAqui = 43
+                    }
+                }
+
+            } else if (decisao == 'dormir') {
+                momento.innerHTML = `acordar`
+                exibirTabela.style.display = "flex"
+                if (exibirTabela.style.display == "none") {
+                    exibirTabela.style.display = "flex"
+                    calculo.innerHTML = "Recomeçar"
+                }
+                
+                //6 Ciclos
+                for (cont = 0; cont < 19; cont++) { //vai rodar 19 vezes para baixo
+                    sextoCiclo.innerHTML = `${horas[taAqui]}<br>` //Mostra a posição atual
+                    taAqui += 1 //A posição atual está descendo
+                    if (taAqui > 43) { //Se a posião atual do array chegar a zero
+                        taAqui = 0 //A posição atual vai receber o final do array
+                    }
+                }
+                taAqui = retomarPosicao
+                //5 Ciclos
+                for (cont = 0; cont < 16; cont++) {
+                    quintoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui += 1
+                    if (taAqui > 43) {
+                        taAqui = 0
+                    }
+                }
+                taAqui = retomarPosicao
+                //4 Ciclos
+                for (cont = 0; cont < 13; cont++) {
+                    quartoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui += 1
+                    if (taAqui > 43) {
+                        taAqui = 0
+                    }
+                }
+                taAqui = retomarPosicao
+                //3 ciclos
+                for (cont = 0; cont < 10; cont++) {
+                    terceiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui += 1
+                    if (taAqui > 43) {
+                        taAqui = 0
+                    }
+                }
+                taAqui = retomarPosicao
+
+                //2 Ciclos
+                for (cont = 0; cont < 7; cont++) {
+                    segundoCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui += 1
+                    if (taAqui > 43) {
+                        taAqui = 0
+                    }
+                }
+                taAqui = retomarPosicao
+                //1 Ciclo
+                for (cont = 0; cont < 4; cont++) {
+                    primeiroCiclo.innerHTML = `${horas[taAqui]}<br>`
+                    taAqui += 1
+                    if (taAqui > 43) {
+                        taAqui = 0
+                    }
+                }
+            }
         }
-
-        taAqui = 0
-        retomarPosicao = 0
-        horaSelecionada = select_hora.value
-
-        //Pegar a posição que a hora se encontra
-        for (posicao = 0; posicao < horas.length; posicao++) {
-            if (horas[posicao] == horaSelecionada) {
-                taAqui = posicao
-                retomarPosicao = posicao
-            }
-        }
-
-        if (decisao == 'acordar') {
-            momento.innerHTML = `ir dormir`
-            //6 Ciclos
-            for (cont = 19; cont > 0; cont--) { //vai rodar 19 vezes para baixo
-                sextoCiclo.innerHTML = `${horas[taAqui]}<br>` //Mostra a posição atual
-                taAqui -= 1 //A posição atual está descendo
-                if (taAqui < 0) { //Se a posião atual do array chegar a zero
-                    taAqui = 43 //A posição atual vai receber o final do array
-                }
-            }
-            taAqui = retomarPosicao
-            //5 Ciclos
-            for (cont = 16; cont > 0; cont--) {
-                quintoCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui -= 1
-                if (taAqui < 0) {
-                    taAqui = 43
-                }
-            }
-            taAqui = retomarPosicao
-            //4 Ciclos
-            for (cont = 13; cont > 0; cont--) {
-                quartoCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui -= 1
-                if (taAqui < 0) {
-                    taAqui = 43
-                }
-            }
-            taAqui = retomarPosicao
-            //3 ciclos
-            for (cont = 10; cont > 0; cont--) {
-                terceiroCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui -= 1
-                if (taAqui < 0) {
-                    taAqui = 43
-                }
-            }
-            taAqui = retomarPosicao
-
-            //2 Ciclos
-            for (cont = 7; cont > 0; cont--) {
-                segundoCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui -= 1
-                if (taAqui < 0) {
-                    taAqui = 43
-                }
-            }
-            taAqui = retomarPosicao
-            //1 Ciclo
-            for (cont = 4; cont > 0; cont--) {
-                primeiroCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui -= 1
-                if (taAqui < 0) {
-                    taAqui = 43
-                }
-            }
-
-        } else {
-            momento.innerHTML = `acordar`
-            //6 Ciclos
-            for (cont = 0; cont < 19; cont++) { //vai rodar 19 vezes para baixo
-                sextoCiclo.innerHTML = `${horas[taAqui]}<br>` //Mostra a posição atual
-                taAqui += 1 //A posição atual está descendo
-                if (taAqui > 43) { //Se a posião atual do array chegar a zero
-                    taAqui = 0 //A posição atual vai receber o final do array
-                }
-            }
-            taAqui = retomarPosicao
-            //5 Ciclos
-            for (cont = 0; cont < 16; cont++) {
-                quintoCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui += 1
-                if (taAqui > 43) {
-                    taAqui = 0
-                }
-            }
-            taAqui = retomarPosicao
-            //4 Ciclos
-            for (cont = 0; cont < 13; cont++) {
-                quartoCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui += 1
-                if (taAqui > 43) {
-                    taAqui = 0
-                }
-            }
-            taAqui = retomarPosicao
-            //3 ciclos
-            for (cont = 0; cont < 10; cont++) {
-                terceiroCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui += 1
-                if (taAqui > 43) {
-                    taAqui = 0
-                }
-            }
-            taAqui = retomarPosicao
-
-            //2 Ciclos
-            for (cont = 0; cont < 7; cont++) {
-                segundoCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui += 1
-                if (taAqui > 43) {
-                    taAqui = 0
-                }
-            }
-            taAqui = retomarPosicao
-            //1 Ciclo
-            for (cont = 0; cont < 4; cont++) {
-                primeiroCiclo.innerHTML = `${horas[taAqui]}<br>`
-                taAqui += 1
-                if (taAqui > 43) {
-                    taAqui = 0
-                }
-            }
-        }
+        
+        
 
         fetch("/usuarios/encaminharDados", {
             method: "POST",
@@ -332,6 +351,35 @@
         });
 
         return false;
+
+        fetch("/usuarios/associarHora", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                idUsuarioServer: idUsuario
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log("Tudo certo")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+
+        
 
     }
 </script>

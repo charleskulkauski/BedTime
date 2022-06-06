@@ -7,6 +7,27 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
+function associarHora(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var associar = req.body.idUsuarioServer;
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.associarHora(associar)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function encaminharDados(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var hora = req.body.horaEscolhidaServer;
@@ -56,7 +77,6 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -122,5 +142,6 @@ module.exports = {
     cadastrar,
     listar,
     testar,
-    encaminharDados
+    encaminharDados,
+    associarHora
 }

@@ -16,6 +16,11 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 });
 
+router.post("/associarHora", function (req, res) {
+    usuarioController.associarHora(req, res);
+});
+
+
 router.post("/encaminharDados", function (req, res) {
     usuarioController.encaminharDados(req, res);
 });
