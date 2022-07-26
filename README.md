@@ -1,2 +1,4 @@
-# API Projeto Site - 1º Semestre
-Esta API será utilizada para conectar seu Website do Projeto de PI ao Banco de Dados.
+# BedTime
+> Status: Desenvolvendo 
+
+### Aplicação web desenvolvida por mim com auxílio da faculdade que ajuda o usuário a calcular a quantidade de horas adequadas para dormir.
